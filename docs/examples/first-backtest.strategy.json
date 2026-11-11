@@ -1,0 +1,14 @@
+{
+  "schemaId": "expectancy.strategy.v3",
+  "name": "First backtest · synthetic TST",
+  "entry": { "match": "all", "rules": [{ "kind": "comparison", "left": { "kind": "sma", "window": 2 }, "operator": "crosses_above", "right": { "kind": "sma", "window": 3 } }] },
+  "exit": { "match": "any", "rules": [{ "kind": "comparison", "left": { "kind": "sma", "window": 2 }, "operator": "crosses_below", "right": { "kind": "sma", "window": 3 } }] },
+  "risk": {
+    "stopLoss": { "enabled": false, "thresholdBps": 500 },
+    "trailingStop": { "enabled": false, "thresholdBps": 500 },
+    "takeProfit": { "enabled": false, "thresholdBps": 1000 },
+    "timeExit": { "enabled": false, "maxBars": 20 }
+  },
+  "positionSizing": { "kind": "fixed_quantity", "quantity": 10 },
+  "timing": { "decision": "after_completed_close", "fill": "next_imported_open" }
+}

@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="dark light">
+    <meta name="theme-color" content="#0a0f10">
+    <meta name="referrer" content="no-referrer">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'; style-src 'self'; script-src 'self' https://static.cloudflareinsights.com/beacon.min.js; connect-src https://cloudflareinsights.com; object-src 'none'; base-uri 'none'; form-action 'none'">
+    <title>Methodology — Expectancy</title>
+    <meta name="description" content="The computational and interpretive methodology used by the Expectancy backtesting environment.">
+    <meta property="og:title" content="Expectancy methodology">
+    <meta property="og:description" content="The computational contract for data, simulation, evidence and interpretation.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://prasoon-anand.github.io/expectancy/methodology.html">
+    <meta property="og:image" content="https://prasoon-anand.github.io/expectancy/assets/og.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+    <script src="theme.js?v=20260917"></script>
+    <link rel="stylesheet" href="styles.css?v=20260917">
+  </head>
+  <body>
+    <a class="skip-link" href="#content">Skip to content</a>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="Expectancy home"><img src="assets/logo.svg" alt="" width="34" height="34"><span><strong>Expectancy</strong><small>Reproducible backtesting</small></span></a>
+      <nav class="primary-nav" aria-label="Primary navigation"><a href="index.html">Overview</a><a href="start.html">Get started</a><a aria-current="page" href="guide.html">Documentation</a><a href="downloads.html">Downloads</a></nav><div class="header-tools"><a class="search-link" href="search.html" aria-label="Search documentation"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><span>Search</span><kbd>/</kbd></a>
+      <button class="theme-toggle" type="button" aria-label="Use light theme" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v2m0 14v2M3 12h2m14 0h2M5.64 5.64l1.42 1.42m9.88 9.88 1.42 1.42m0-12.72-1.42 1.42M7.06 16.94l-1.42 1.42"/><circle cx="12" cy="12" r="4"/></svg></button></div>
+    </header>
+
+    <main id="content" class="document-shell">
+      <nav class="document-nav" aria-label="Documentation"><a href="guide.html">User guide</a><a aria-current="page" href="methodology.html">Methodology</a><a href="reference.html">Reference</a></nav><header class="document-hero">
+        <p class="eyebrow">Computational contract</p>
+        <h1>Methodology</h1>
+        <p class="lede">Expectancy treats a backtest as a deterministic transformation from identified source observations and an explicit strategy specification to a set of accounting and diagnostic records. This page describes the assumptions required to interpret that transformation.</p>
+        <dl class="document-meta"><div><dt>Scope</dt><dd>Historical simulation</dd></div><div><dt>Numeric policy</dt><dd>Checked fixed-point integers</dd></div><div><dt>Primary decision clock</dt><dd>Completed observations</dd></div><div><dt>Specification</dt><dd>Versioned with each release</dd></div></dl>
+      </header>
+
+      <div class="document-layout">
+        <aside class="toc" aria-label="On this page"><p>On this page</p><a href="#interpretation">1. Interpretation</a><a href="#data">2. Data identity</a><a href="#time">3. Time and ordering</a><a href="#numeric">4. Numerical policy</a><a href="#execution">5. Execution model</a><a href="#evidence">6. Result evidence</a><a href="#validation">7. Validation</a><a href="#failure">8. Failure semantics</a></aside>
+        <article class="prose">
+          <section id="interpretation">
+            <p class="section-number">01</p><h2>Interpretation</h2>
+            <p>A backtest answers a conditional statement: given the imported observations, the selected calendar and universe, the stated strategy document, and the configured execution model, what sequence of decisions and accounting transitions does the engine produce?</p>
+            <div class="equation" role="img" aria-label="Result equals the simulation function applied to identified data, strategy, execution assumptions and software version"><span>R</span> = F(<i>D</i><sub>id</sub>, <i>S</i><sub>v</sub>, <i>E</i>, <i>C</i>, <i>V</i>)</div>
+            <p>The result is therefore conditional on model structure and data quality. It does not estimate causal effect, establish market predictability, or demonstrate that an order could have been executed at the simulated price and quantity.</p>
+            <div class="callout caution"><strong>Interpretive boundary</strong><p>Return, drawdown, Sharpe-like measures and win rates are properties of one historical simulation. They must be read with the tested interval, trial count, costs, universe construction and out-of-sample evidence.</p></div>
+          </section>
+
+          <section id="data">
+            <p class="section-number">02</p><h2>Data identity and provenance</h2>
+            <p>The importer reads CSV or compressed Parquet and produces a canonical, immutable local representation only after blocking checks pass. The original source is not modified. A content identity binds the source receipt, column mapping, normalized observations and validation outcome.</p>
+            <h3>Minimum observation fields</h3>
+            <div class="definition-table" role="table" aria-label="Canonical observation fields">
+              <div role="row"><b role="columnheader">Field</b><b role="columnheader">Interpretation</b><b role="columnheader">Constraint</b></div>
+              <div role="row"><code role="cell">symbol</code><span role="cell">Instrument identifier</span><span role="cell">Non-empty, explicit mapping</span></div>
+              <div role="row"><code role="cell">session_date</code><span role="cell">Trading-session observation</span><span role="cell">Ordered and calendar-resolved</span></div>
+              <div role="row"><code role="cell">open high low close</code><span role="cell">OHLC price tuple</span><span role="cell">Finite, coherent, fixed-scale values</span></div>
+              <div role="row"><code role="cell">volume</code><span role="cell">Observed traded quantity</span><span role="cell">Non-negative canonical value</span></div>
+            </div>
+            <p>Duplicate observations, incoherent OHLC ranges, invalid numbers, unsupported dates and ambiguous mappings are resolved or rejected before publication. Missing point-in-time universe or corporate-action lineage is surfaced separately; it is not inferred from price data.</p>
+          </section>
+
+          <section id="time">
+            <p class="section-number">03</p><h2>Time, calendars and event ordering</h2>
+            <p>Strategies observe completed bars. A decision created after a close cannot receive an earlier price. The earliest normal market fill is the next eligible imported open, subject to the configured calendar, order type, liquidity and capital constraints.</p>
+            <ol class="method-sequence">
+              <li><span>t</span><div><strong>Observe</strong><p>Close the current bar and update indicators using only observations available at that boundary.</p></div></li>
+              <li><span>t+</span><div><strong>Decide</strong><p>Evaluate the typed strategy tree and emit a decision with its exact supporting values.</p></div></li>
+              <li><span>t+1</span><div><strong>Attempt</strong><p>Submit the order to the next eligible event and apply order, price, volume and capital rules.</p></div></li>
+              <li><span>t+1</span><div><strong>Account</strong><p>Record fills, fees, positions, cash and ledger transitions in stable event order.</p></div></li>
+            </ol>
+            <p>Reviewed calendars currently cover XNYS 2025–2028, XNAS 2025–2026 and XLON 2026. Calendar resolution fails closed outside reviewed coverage. Multi-asset simulations use one shared event clock and explicit missing-bar states.</p>
+          </section>
+
+          <section id="numeric">
+            <p class="section-number">04</p><h2>Numerical representation</h2>
+            <p>Financial quantities are represented using checked fixed-point integers with declared scales. Arithmetic is checked for overflow; rounding occurs only at specified boundaries. Floating-point values are not used as the authoritative financial state.</p>
+            <div class="method-grid">
+              <article><h3>Prices and cash</h3><p>Canonical decimal text is parsed to a fixed scale, preserving deterministic comparison and aggregation.</p></article>
+              <article><h3>Rates</h3><p>Percentages and basis-point inputs retain their declared units and are rejected when their domain is ambiguous.</p></article>
+              <article><h3>Metrics</h3><p>Reported ratios are derived from canonical ledger and equity records rather than maintained as parallel mutable state.</p></article>
+              <article><h3>Reproduction</h3><p>Identical valid inputs and software identity must produce the same financial and evidence fingerprints.</p></article>
+            </div>
+          </section>
+
+          <section id="execution">
+            <p class="section-number">05</p><h2>Execution model</h2>
+            <p>The execution model is an explicit experimental assumption. It supports market, limit, stop and stop-limit lifecycles; whole-share sizing modes; long and short positions; volume participation; partial fills; spread, slippage and market impact; commission and borrow costs; leverage and maintenance-margin rules; and selected raw corporate actions.</p>
+            <figure class="inline-figure"><img src="assets/strategy-model.jpg" alt="Strategy editor with separate entry, exit and execution-assumption controls." width="1208" height="816"><figcaption><span class="figure-kicker">Execution workspace</span><strong>Separate rules from assumptions</strong><p>Signal logic, fill timing, costs and liquidity remain distinct, reviewable parts of the experiment.</p><a href="assets/strategy-model.jpg" target="_blank" rel="noopener">Open full-size screenshot ↗</a></figcaption></figure>
+            <p>These controls increase model specificity; they do not make simulated liquidity equivalent to historical order-book reconstruction. Bar data cannot determine the unique intrabar path when several trigger prices are crossed. Such cases require a documented policy or a preflight failure.</p>
+          </section>
+
+          <section id="evidence">
+            <p class="section-number">06</p><h2>Result evidence</h2>
+            <p>A completed run retains canonical evidence tables rather than only summary metrics. The single-symbol and portfolio paths expose bounded pages of observations, indicator values, decisions, orders, fills, trades, positions, cash-ledger entries, equity and diagnostic findings.</p>
+            <div class="evidence-map">
+              <span>Observation</span><b>→</b><span>Indicator</span><b>→</b><span>Decision</span><b>→</b><span>Order</span><b>→</b><span>Fill</span><b>→</b><span>Ledger</span>
+            </div>
+            <p>Each link is navigable to a dated source observation where the required evidence exists. The immutable result identity changes when bound data, strategy, execution assumptions or canonical result content changes.</p>
+          </section>
+
+          <section id="validation">
+            <p class="section-number">07</p><h2>Research validation</h2>
+            <p>Expectancy distinguishes an in-sample simulation from evidence about stability or generalization. The research workspace records chronological folds, sealed holdouts, parameter families, candidate counts, failed trials, benchmark identity and multiple-testing disclosures.</p>
+            <div class="assessment-grid">
+              <article><span class="assessment assessed">Assessed</span><h3>Required evidence present</h3><p>The exact artifact contains enough verified information to evaluate the stated check.</p></article>
+              <article><span class="assessment attention">Attention</span><h3>Evidence indicates a risk</h3><p>The finding identifies its supporting values, likely impact and a concrete next action.</p></article>
+              <article><span class="assessment unassessed">Not assessed</span><h3>Required evidence absent</h3><p>No conclusion is produced. Absence is not converted into a favourable state.</p></article>
+            </div>
+            <p>No blended “trust score” is produced. Distinct questions—data lineage, cost sensitivity, parameter stability, temporal holdout and benchmark-relative behaviour—remain separate so their assumptions remain visible.</p>
+          </section>
+
+          <section id="failure">
+            <p class="section-number">08</p><h2>Failure and interruption semantics</h2>
+            <p>Invalid inputs fail before simulation with actionable diagnostics. Cancellation, process termination and output-limit failures cannot create a completed-looking result. Durable run storage distinguishes completed, failed, interrupted, cancelled and corrupt states.</p>
+            <p>The implementation is bounded: requests, evidence pages, formula trees, rule graphs, worker processes, result output and estimated working memory have explicit limits. These limits are part of the scientific contract because silent resource exhaustion can alter which experiments are observed and retained.</p>
+            <div class="source-links"><a href="guide.html">Apply the workflow</a><a href="reference.html">Capability reference</a><a href="https://github.com/prasoon-anand/expectancy/releases">Release records</a></div>
+          </section>
+        </article>
+      </div>
+    </main>
+
+    <footer class="site-footer"><div class="footer-brand"><img src="assets/logo.svg" alt="" width="28" height="28"><p><strong>Expectancy</strong><span>Test the strategy. Inspect the evidence.</span></p></div><div class="footer-links"><a href="index.html">Overview</a><a href="guide.html">User guide</a><a href="reference.html">Reference</a><a href="reference.html#privacy">Privacy</a><a href="https://github.com/prasoon-anand/expectancy/releases">Releases</a></div><p class="legal">Free to download · Proprietary software · No investment advice</p></footer>
+    <script src="analytics.js?v=20260904"></script>
+    <script src="script.js?v=20260917"></script>
+  </body>
+</html>

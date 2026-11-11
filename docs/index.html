@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="dark light">
+    <meta name="theme-color" content="#101715">
+    <meta name="referrer" content="no-referrer">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'; style-src 'self'; script-src 'self' https://static.cloudflareinsights.com/beacon.min.js; connect-src https://cloudflareinsights.com; object-src 'none'; base-uri 'none'; form-action 'none'">
+    <title>Expectancy — A workspace for reproducible backtesting</title>
+    <meta name="description" content="Free desktop software for trading-strategy research. Bring your own data, define a strategy, and inspect the evidence. Computation stays on your computer.">
+    <meta property="og:title" content="Expectancy — Reproducible backtesting">
+    <meta property="og:description" content="Free desktop software for reproducible backtesting with inspectable evidence.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://prasoon-anand.github.io/expectancy/">
+    <meta property="og:image" content="https://prasoon-anand.github.io/expectancy/assets/og.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Expectancy — Reproducible backtesting">
+    <meta name="twitter:description" content="Free desktop software for reproducible backtesting with inspectable evidence.">
+    <meta name="twitter:image" content="https://prasoon-anand.github.io/expectancy/assets/og.jpg">
+    <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+    <script src="theme.js?v=20260917"></script>
+    <link rel="stylesheet" href="styles.css?v=20260917">
+  </head>
+  <body class="home">
+    <a class="skip-link" href="#content">Skip to content</a>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="Expectancy home"><img src="assets/logo.svg" alt="" width="34" height="34"><span><strong>Expectancy</strong><small>Reproducible backtesting</small></span></a>
+      <nav class="primary-nav" aria-label="Primary navigation"><a aria-current="page" href="index.html">Overview</a><a href="start.html">Get started</a><a href="guide.html">Documentation</a><a href="downloads.html">Downloads</a></nav><div class="header-tools"><a class="search-link" href="search.html" aria-label="Search documentation"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><span>Search</span><kbd>/</kbd></a>
+      <button class="theme-toggle" type="button" aria-label="Use light theme" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v2m0 14v2M3 12h2m14 0h2M5.64 5.64l1.42 1.42m9.88 9.88 1.42 1.42m0-12.72-1.42 1.42M7.06 16.94l-1.42 1.42"/><circle cx="12" cy="12" r="4"/></svg></button></div>
+    </header>
+    <main id="content">
+      <section class="hero section-grid" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span> Local, inspectable strategy research</p>
+          <h1 id="hero-title">Test a strategy.<br><span>Understand<br class="desktop-break"> the evidence.</span></h1>
+          <p class="lede">Bring your data. Define your rules. Trace a historical simulation from its assumptions to every trade, cost and result.</p>
+          <div class="hero-actions"><a class="button primary" href="#download">Download Expectancy <span aria-hidden="true">↓</span></a><a class="text-link" href="start.html">Your first backtest <span aria-hidden="true">↗</span></a></div>
+          <p class="hero-platforms">Apple Silicon first <span aria-hidden="true">/</span> Other platforms planned</p>
+        </div>
+        <figure class="hero-workspace">
+          <div class="figure-topline"><span><i class="state implemented" aria-hidden="true"></i> Inside Expectancy</span><span>Results / 03</span></div>
+          <a class="screenshot-link" href="assets/example-results.png" target="_blank" rel="noopener" data-lightbox aria-label="Enlarge the backtest results screenshot"><img src="assets/example-results.png" alt="Synthetic TST result showing ending equity of 918, a net return of minus 8.20 percent, and one closed trade." width="1422" height="800" fetchpriority="high"><span class="zoom-hint" aria-hidden="true">↗ Expand</span></a>
+          <figcaption><span>TST / 8 bars / 1 closed trade</span><span class="sample-label">Synthetic example</span></figcaption>
+        </figure>
+      </section>
+      <section class="evidence-strip" aria-label="Product principles">
+        <div><span class="strip-number" aria-hidden="true">01 /</span><div><strong>Your data stays with you</strong><span>Local computation. No research account required.</span></div></div>
+        <div><span class="strip-number" aria-hidden="true">02 /</span><div><strong>Every assumption is explicit</strong><span>Rules, timing, costs and liquidity recorded together.</span></div></div>
+        <div><span class="strip-number" aria-hidden="true">03 /</span><div><strong>Results remain inspectable</strong><span>Follow a metric back to its trades and source data.</span></div></div>
+      </section>
+      <section id="workspace" class="workspace-section section-grid" aria-labelledby="workspace-title">
+        <div class="section-intro"><div><p class="eyebrow">The research workspace</p><h2 id="workspace-title">One example.<br>From input to evidence.</h2></div><p>Follow eight synthetic bars through the real interface. A small, losing trade makes the mechanics visible—without suggesting a profitable strategy.</p></div>
+        <div class="workspace-tabs" role="tablist" aria-label="Explore the workspace" hidden>
+          <button type="button" role="tab" id="tab-data" aria-controls="panel-data" aria-selected="true" tabindex="0"><span>01</span> Data</button>
+          <button type="button" role="tab" id="tab-strategy" aria-controls="panel-strategy" aria-selected="false" tabindex="-1"><span>02</span> Strategy</button>
+          <button type="button" role="tab" id="tab-results" aria-controls="panel-results" aria-selected="false" tabindex="-1"><span>03</span> Results</button>
+        </div>
+        <div class="workspace-panel product-figure" id="panel-data" role="tabpanel" aria-labelledby="tab-data" tabindex="0">
+          <figure class="screen-frame"><a class="screenshot-link" href="assets/example-import.png" data-lightbox target="_blank" rel="noopener" aria-label="Enlarge the data import screenshot"><img src="assets/example-import.png" alt="Synthetic TST CSV with seven mapped columns and a source preview." width="1422" height="800" loading="lazy"><span class="zoom-hint" aria-hidden="true">↗ Expand</span></a><figcaption><span>01 / DATA</span><span>Local files. Explicit column mapping.</span></figcaption></figure>
+          <div class="workspace-copy"><p class="eyebrow">01 / Eight synthetic observations</p><h3>Start with a file.<br>Confirm its meaning.</h3><p>The worked example begins with one CSV, one invented instrument and eight daily bars. Match each column to its meaning before validating the dataset.</p><ul class="figure-points"><li>Original source files remain unchanged</li><li>Dates, prices and volume checked before use</li><li>Source provenance retained with the dataset</li></ul><a class="text-link" href="start.html#import">Import the example <span aria-hidden="true">↗</span></a></div>
+        </div>
+        <div class="workspace-panel product-figure" id="panel-strategy" role="tabpanel" aria-labelledby="tab-strategy" tabindex="0">
+          <figure class="screen-frame"><a class="screenshot-link" href="assets/example-strategy.png" data-lightbox target="_blank" rel="noopener" aria-label="Enlarge the strategy editor screenshot"><img src="assets/example-strategy.png" alt="Visual strategy editor for the synthetic TST 2/3-period moving-average crossover." width="1422" height="800" loading="lazy"><span class="zoom-hint" aria-hidden="true">↗ Expand</span></a><figcaption><span>02 / STRATEGY</span><span>SMA(2) / SMA(3) · long-only</span></figcaption></figure>
+          <div class="workspace-copy"><p class="eyebrow">02 / A two-rule specification</p><h3>Write the rule.<br>Separate the execution.</h3><p>Enter when the 2-period simple moving average crosses above the 3-period average. Exit on the reverse crossing. Decisions use completed closes; orders fill at the next imported open.</p><ul class="figure-points"><li>Visual rules or a typed strategy document</li><li>Fixed quantity of 10 for this example</li><li>Commission and slippage stated before the run</li></ul><a class="text-link" href="start.html#rules">Set up the two rules <span aria-hidden="true">↗</span></a></div>
+        </div>
+        <div class="workspace-panel product-figure" id="panel-results" role="tabpanel" aria-labelledby="tab-results" tabindex="0">
+          <figure class="screen-frame"><a class="screenshot-link" href="assets/example-results.png" data-lightbox target="_blank" rel="noopener" aria-label="Enlarge the results workspace screenshot"><img src="assets/example-results.png" alt="Synthetic backtest results showing equity, drawdown, exposure and attribution." width="1422" height="800" loading="lazy"><span class="zoom-hint" aria-hidden="true">↗ Expand</span></a><figcaption><span>03 / RESULTS</span><span>Verified example · −8.20% net return.</span></figcaption></figure>
+          <div class="workspace-copy"><p class="eyebrow">03 / A result to reconcile</p><h3>Explain the loss.<br>Account for every unit.</h3><p>Buy 10 units at 13; sell at 5. Two fees of 1 turn a gross loss of 80 into a net loss of 82. Ending equity is 918 from starting cash of 1,000.</p><ul class="figure-points"><li>Single-symbol and backtest results</li><li>Orders, fills, cash and ledger evidence</li><li>Verified comparisons between saved runs</li></ul><a class="text-link" href="start.html#inspect">Reconcile the result <span aria-hidden="true">↗</span></a></div>
+        </div>
+      </section>
+      <section class="limitations section-grid" aria-labelledby="limitations-title"><div><p class="eyebrow">Scientific scope</p><h2 id="limitations-title">Historical evidence.<br>Not a forecast.</h2></div><div><p>A backtest describes what a specified model produces on specified historical data. It does not establish future profitability or executable performance.</p><ul class="limit-list"><li>No supplied market data, brokerage connection or live orders.</li><li>Bar data cannot recover intraday paths, queue position or unobserved liquidity.</li><li>Numerically valid rows do not remove survivorship or selection bias.</li></ul><a class="text-link" href="reference.html#limits">Read the scientific limits <span aria-hidden="true">↗</span></a></div></section>
+      <section id="download" class="download-band section-grid"><div><p class="eyebrow">Free desktop software</p><h2>Keep the research local.</h2><p>The first release targets macOS on Apple Silicon. Review its preparation status, installation requirements and verification records.</p></div><div><a class="button primary" href="downloads.html">Downloads &amp; installation <span aria-hidden="true">→</span></a><p>Intel macOS · Windows · Linux — planned</p></div></section>
+      <section class="resource-index section-grid" aria-labelledby="resources-title"><div class="section-intro"><div><p class="eyebrow">The documentation</p><h2 id="resources-title">Choose your next question.</h2></div><p>Start with a reproducible exercise, then use the guide and reference when your own research calls for more detail.</p></div><div class="resource-grid"><a href="start.html"><span>01 / Start here</span><h3>Can I reproduce a result?</h3><p>A complete first backtest with a CSV, strategy document and expected values.</p><b aria-hidden="true">↗</b></a><a href="guide.html"><span>02 / Do the work</span><h3>How do I use my data?</h3><p>Import, validation, strategy authoring and the path through the research workspace.</p><b aria-hidden="true">↗</b></a><a href="methodology.html"><span>03 / Understand the model</span><h3>What does the result mean?</h3><p>Execution timing, numerical policy, uncertainty and interpretation.</p><b aria-hidden="true">↗</b></a></div></section>
+    </main>
+    <footer class="site-footer"><div class="footer-brand"><img src="assets/logo.svg" alt="" width="32" height="32"><p><strong>Expectancy</strong><span>Test the strategy. Inspect the evidence.</span></p></div><div class="footer-links"><a href="methodology.html">Methodology</a><a href="guide.html">User guide</a><a href="reference.html">Reference</a><a href="reference.html#privacy">Privacy</a><a href="https://github.com/prasoon-anand/expectancy/releases">Releases ↗</a></div><p class="legal">Free to download · Proprietary software · No investment advice</p></footer>
+    <script src="analytics.js?v=20260904"></script>
+    <script src="script.js?v=20260917"></script>
+  </body>
+</html>

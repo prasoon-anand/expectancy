@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="dark light">
+    <meta name="theme-color" content="#101715">
+    <meta name="referrer" content="no-referrer">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'; style-src 'self'; script-src 'self' https://static.cloudflareinsights.com/beacon.min.js; connect-src https://cloudflareinsights.com; object-src 'none'; base-uri 'none'; form-action 'none'">
+    <title>Downloads — Expectancy</title>
+    <meta name="description" content="Expectancy for Apple Silicon macOS: first-release preparation, installer verification, and planned platforms.">
+    <meta property="og:title" content="Downloads — Expectancy">
+    <meta property="og:description" content="Expectancy for Apple Silicon macOS: first-release preparation, installer verification, and planned platforms.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://prasoon-anand.github.io/expectancy/downloads.html">
+    <meta property="og:image" content="https://prasoon-anand.github.io/expectancy/assets/og.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Downloads — Expectancy">
+    <meta name="twitter:description" content="Expectancy for Apple Silicon macOS: first-release preparation, installer verification, and planned platforms.">
+    <meta name="twitter:image" content="https://prasoon-anand.github.io/expectancy/assets/og.jpg">
+    <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+    <script src="theme.js?v=20260917"></script>
+    <link rel="stylesheet" href="styles.css?v=20260917">
+  </head>
+  <body>
+<a class="skip-link" href="#content">Skip to content</a>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="Expectancy home"><img src="assets/logo.svg" alt="" width="34" height="34"><span><strong>Expectancy</strong><small>Reproducible backtesting</small></span></a>
+      <nav class="primary-nav" aria-label="Primary navigation"><a href="index.html">Overview</a><a href="start.html">Get started</a><a href="guide.html">Documentation</a><a aria-current="page" href="downloads.html">Downloads</a></nav><div class="header-tools"><a class="search-link" href="search.html" aria-label="Search documentation"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><span>Search</span><kbd>/</kbd></a>
+      <button class="theme-toggle" type="button" aria-label="Use light theme" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v2m0 14v2M3 12h2m14 0h2M5.64 5.64l1.42 1.42m9.88 9.88 1.42 1.42m0-12.72-1.42 1.42M7.06 16.94l-1.42 1.42"/><circle cx="12" cy="12" r="4"/></svg></button></div>
+    </header>
+
+<main id="content" class="document-shell">
+<header class="document-hero"><p class="eyebrow">The desktop application</p><h1>Download Expectancy.</h1><p class="lede">Local strategy research, starting with Apple Silicon.<br>Free to download and use. No application source code is distributed.</p></header>
+<section id="release" class="release-section" aria-labelledby="packages">
+<div class="release-heading"><h2 id="packages">Apple Silicon first.</h2><a class="text-link" href="https://github.com/prasoon-anand/expectancy/releases">Release records ↗</a></div>
+<p class="release-note">The first public preview is being prepared for macOS on Apple Silicon. Other platforms will follow independent qualification; no release dates have been announced.</p>
+<article class="first-release-card" id="macos">
+<div class="first-release-copy"><p class="eyebrow"><span aria-hidden="true">⌘</span> First release</p><h3>macOS · Apple Silicon</h3><span class="availability release-preparing">Preview in preparation</span><p>A verified installer has not yet been listed. The download will appear here after the release’s correctness, security, accessibility and installation checks are complete.</p><a class="text-link" href="#verify">How to verify a package <span aria-hidden="true">↓</span></a></div>
+<dl class="release-facts"><div><dt>Architecture</dt><dd>Apple Silicon · ARM64</dd></div><div><dt>Planned package</dt><dd>macOS disk image (.dmg)</dd></div><div><dt>Minimum macOS</dt><dd>To be confirmed by release testing</dd></div><div><dt>Publisher verification</dt><dd>Signing and notarization required before release</dd></div></dl>
+</article>
+<div class="planned-heading"><h3>Other platforms</h3><p>Planned support, not currently available downloads.</p></div>
+<ul class="planned-platforms" aria-label="Planned platforms">
+<li id="macos-intel"><div><strong>macOS · Intel</strong><span>x86-64</span></div><span class="availability">Planned</span></li>
+<li id="windows"><div><strong>Windows</strong><span>x86-64</span></div><span class="availability">Planned</span></li>
+<li id="linux"><div><strong>Linux</strong><span>x86-64</span></div><span class="availability">Planned</span></li>
+</ul>
+<p class="caption-note">The first release will not include an Intel or universal Mac package. Each later platform must complete its own compatibility and release checks before an installer is listed.</p>
+</section>
+<div class="document-layout"><aside class="toc" aria-label="On this page"><p>Installation notes</p><a href="#verify">Verify the package</a><a href="#install">Install safely</a><a href="#update">Updating the app</a><a href="#start">After installation</a></aside><article class="prose">
+<section id="verify"><h2>Verify before opening.</h2><ol class="instruction-list"><li><span>1</span><div><strong>Match the platform and architecture</strong><p>The first release is for Apple Silicon, not Intel Macs. Check the chip in About This Mac, then compare your macOS version with the exact release’s tested requirements. Do not infer compatibility from the processor alone.</p></div></li><li><span>2</span><div><strong>Compare the SHA-256 checksum</strong><p>Calculate the digest of your downloaded file and compare it with the release’s checksum record. A checksum detects file changes; it does not identify the publisher by itself.</p></div></li><li><span>3</span><div><strong>Check publisher verification</strong><p>Read the release’s signing or notarization status. Do not assume a package is signed because it appears on this page.</p></div></li></ol><details><summary>Check the SHA-256 checksum on macOS</summary><p>In Terminal, replace the quoted filename with the exact path to your downloaded disk image. Compare the output with the checksum in that release’s record.</p><pre><code>shasum -a 256 "Expectancy.dmg"</code></pre><p>This checks the file’s digest, not its signing identity or notarization status.</p></details></section>
+<section id="install"><h2>Follow the package’s instructions.</h2><p>Use the installation steps attached to the specific release. Package formats, runtime dependencies and minimum system versions may differ. If your system reports an unknown publisher or failed signature, stop and verify the release record; do not disable operating-system protections to continue.</p><div class="callout"><strong>Your data is separate from the installer</strong><p>Expectancy does not supply market data. Import your own files or begin with the synthetic tutorial dataset. Check data rights before sharing projects or exported results.</p></div></section>
+<section id="update"><h2>Preserve your research when updating.</h2><p>Export important datasets, strategies and completed evidence before replacing an installed version. Read migration notes for storage or schema changes. Keep the previous installer until you have verified that your saved work opens correctly; do not assume an older version can read newer storage.</p></section>
+<section id="start"><h2>Start with a result you can reconcile.</h2><p>The first-backtest walkthrough uses eight synthetic bars and accounts for every signal, fill and fee.</p><a class="button primary" href="start.html">Your first backtest <span aria-hidden="true">→</span></a></section>
+</article></div></main>
+    <footer class="site-footer"><div class="footer-brand"><img src="assets/logo.svg" alt="" width="32" height="32"><p><strong>Expectancy</strong><span>Test the strategy. Inspect the evidence.</span></p></div><div class="footer-links"><a href="methodology.html">Methodology</a><a href="guide.html">User guide</a><a href="reference.html">Reference</a><a href="reference.html#privacy">Privacy</a><a href="https://github.com/prasoon-anand/expectancy/releases">Releases ↗</a></div><p class="legal">Free to download · Proprietary software · No investment advice</p></footer>
+<script src="analytics.js?v=20260904"></script><script src="script.js?v=20260917"></script>
+</body></html>

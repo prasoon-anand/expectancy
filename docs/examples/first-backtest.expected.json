@@ -1,0 +1,61 @@
+{
+  "description": "Synthetic eight-bar mechanics example. Not market data or investment evidence.",
+  "verifiedOn": "2026-09-17",
+  "engineSchemaVersion": 10,
+  "manifestSchemaId": "expectancy.run-manifest.v9",
+  "runLogicalSha256": "0b2ed77c382cd4efe5aaee55360cc90e45973c33917caa425b57b976bfdd9070",
+  "assumptions": {
+    "starting_cash": "1000",
+    "commission_per_fill": "1",
+    "slippage_bps": "0",
+    "adjusted_prices_attested": true,
+    "forced_liquidation": false
+  },
+  "metrics": {
+    "starting_cash": "1000",
+    "ending_equity": "918",
+    "net_return": "-0.082",
+    "maximum_drawdown": "-0.082",
+    "gross_realized_pnl": "-80",
+    "total_commissions": "2",
+    "net_realized_pnl": "-82",
+    "closed_trade_count": 1,
+    "open_position": false,
+    "pending_order": false,
+    "trade_analytics": {
+      "winning_trade_count": 0,
+      "losing_trade_count": 1,
+      "breakeven_trade_count": 0,
+      "win_rate": "0",
+      "gross_profit": "0",
+      "gross_loss": "-82",
+      "profit_factor": "0",
+      "average_loss": "-82",
+      "expectancy_per_trade": "-82",
+      "average_bars_held": "3",
+      "exposure": "0.375"
+    }
+  },
+  "fills": [
+    {
+      "id": 1,
+      "order_id": 1,
+      "side": "BUY",
+      "quantity": 10,
+      "session_date": "2026-01-08",
+      "price": "13",
+      "gross_notional": "130",
+      "commission": "1"
+    },
+    {
+      "id": 2,
+      "order_id": 2,
+      "side": "SELL",
+      "quantity": 10,
+      "session_date": "2026-01-13",
+      "price": "5",
+      "gross_notional": "50",
+      "commission": "1"
+    }
+  ]
+}
